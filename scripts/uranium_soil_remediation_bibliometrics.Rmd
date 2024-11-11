@@ -12,16 +12,90 @@ editor_options:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Packages
+# Load necessary libraries and initial setup
 
 ```{r}
 library(bibliometrix)
 library(rprojroot)
+```
 
-setwd(find_rstudio_root_file())
+## Clear environment and close graphics
+
+```{r}
+root_file <- find_rstudio_root_file()
+setwd(root_file)
 data <- convert2df("data/database1.bib", dbsource = "scopus", format = "bibtex")
 ```
 
-```{r}
+# Introduction
 
+This document performs a bibliometric analysis on a dataset, providing descriptive analysis and visualizations for author co-citation and keyword co-occurrences.
+
+# Data loading
+
+```{r}
+# Set the working directory to locate files
+setwd(find_rstudio_root_file())
+
+# Convert bibliographic data from .bib format to a data frame
+data <- convert2df("data/database1.bib", dbsource = "scopus", format = "bibtex")
+```
+
+# Bibliometric analysis
+
+This analysis provides general statistics about the dataset, including the number of documents, authors, sources, and other key information.
+
+```{r}
+# Perform a bibliometric analysis
+result <- biblioAnalysis(data)
+
+# Display a summary of the results
+summary(result)
+```
+
+# Plot analysis
+
+This plot gives a general overview, helping to identify patterns in the data.
+
+```{r}
+# Generate plots of the bibliometric analysis
+plot(x = result)
+```
+
+# Conceptual structure
+
+This analysis uses Correspondence Analysis (CA) to group documents by keywords, identifying thematic clusters in the research field.
+
+```{r}
+# Perform conceptual structure analysis using keywords
+CS <- conceptualStructure(data, field = "ID", method = "CA", minDegree = 3, clust = 4, stemming = FALSE, labelsize = 10, documents = nrow(data))
+```
+
+# Bibliographic networks
+
+## Author co-citation
+
+This network visualizes the relationships between authors based on shared citations, identifying influential authors in the field.
+
+```{r}
+# Rename the author column (if necessary)
+colnames(data)[colnames(data) == "AU"] <- "CR_AU"
+
+# Create a network matrix for author co-citation
+NetMatrix_citation_cc <- biblioNetwork(data, analysis = "co-citation", network = "authors", sep = ";")
+
+# Plot the author co-citation network
+co_citation = networkPlot(NetMatrix_citation_cc, normalize = "association", weighted = NULL, n = nrow(data), Title = "Author Co-Citation Network", type = "fruchterman", size = TRUE, edgesize = 2.5, labelsize = 1)
+```
+
+## Keyword co-occurrences
+
+This network shows the relationships between keywords that frequently appear together in documents, highlighting main topics and trends within the field.
+
+```{r}
+# Create a network matrix for keyword co-occurrences
+NetMatrix_keyword_co <- biblioNetwork(data, analysis = "co-occurrences", network = "keywords", sep = ";")
+
+# Plot the keyword co-occurrence network
+keyword_co = networkPlot(NetMatrix_keyword_co, normalize = "association", weighted = NULL, n = nrow(data), Title = "Keyword Co-Occurrences", type = "fruchterman", size = TRUE, edgesize = 2.5, labelsize = 1)
 ```
