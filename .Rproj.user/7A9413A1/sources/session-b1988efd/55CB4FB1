@@ -1,0 +1,26 @@
+{
+    "id": "55CB4FB1",
+    "path": "~/R Scripts/uranium-soil-remediation-bibliometrics/scripts/uranium_soil_remediation_bibliometrics.R",
+    "project_path": "scripts/uranium_soil_remediation_bibliometrics.R",
+    "type": "r_source",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1731221502843.0,
+    "source_on_save": false,
+    "relative_order": 2,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "25,30",
+        "scrollLine": "14"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1731277462,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1731277462775,
+    "read_only": false,
+    "read_only_alternatives": []
+}
