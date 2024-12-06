@@ -5,7 +5,7 @@ date: "2024-11-10"
 output: html_document
 language: r
 editor_options: 
-  chunk_output_type: inline
+  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}

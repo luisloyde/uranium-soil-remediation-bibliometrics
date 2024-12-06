@@ -1,5 +1,5 @@
 {
-    "chunk_output_type": "inline",
+    "chunk_output_type": "console",
     "source_window_id": "",
     "Source": "Source",
     "rmdVisualMode": "false",
@@ -8,6 +8,6 @@
     "rmdVisualCollapsedChunks": "",
     "rmdVisualModeLocation": "1589:3780.800048828125",
     "cursorPosition": "142,0",
-    "scrollLine": "0",
-    "last_setup_crc32": "8d91022cbb338d19"
+    "scrollLine": "29",
+    "last_setup_crc32": ""
 }
