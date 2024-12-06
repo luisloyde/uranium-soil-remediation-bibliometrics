@@ -20,7 +20,9 @@ To run this project, ensure that you have the following R packages installed:
 - ggplot2: A package for data visualization.
 
 ## Example Outputs
+![Imagen3](https://github.com/user-attachments/assets/4d731e5e-472e-4977-a825-9b1e1d298de3)
+![Imagen2](https://github.com/user-attachments/assets/1b0ad6a5-60c0-4573-a34e-e1142af0c169)
+![Imagen4](https://github.com/user-attachments/assets/f054ce49-21e0-490c-b47e-678024282298)
 
-
-# License
-This project is licensed under the MIT License. See the LICENSE file for more details.
+## License
+This project is licensed under the Apache 2.0 License. See the LICENSE file for more details.
