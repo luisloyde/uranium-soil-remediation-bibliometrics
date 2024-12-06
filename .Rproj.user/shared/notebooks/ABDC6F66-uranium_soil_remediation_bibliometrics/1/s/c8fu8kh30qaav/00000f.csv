@@ -1,0 +1,25 @@
+"0","library(bibliometrix)"
+"2","Aviso: package ‘bibliometrix’ was built under R version 4.4.2"
+"2","Please note that our software is open source and available for use, distributed under the MIT license.
+When it is used in a publication, we ask that authors properly cite the following reference:
+
+Aria, M. & Cuccurullo, C. (2017) bibliometrix: An R-tool for comprehensive science mapping analysis, 
+                        Journal of Informetrics, 11(4), pp 959-975, Elsevier.
+
+Failure to properly cite the software is considered a violation of the license.
+                        
+For information and bug reports:
+                        - Take a look at https://www.bibliometrix.org
+                        - Send an email to info@bibliometrix.org   
+                        - Write a post on https://github.com/massimoaria/bibliometrix/issues
+                        
+Help us to keep Bibliometrix and Biblioshiny free to download and use by contributing with a small donation to support our research team (https://bibliometrix.org/donate.html)
+
+                        
+To start with the Biblioshiny app, please digit:
+biblioshiny()
+
+"
+"0","library(rprojroot)"
+"2","Aviso: package ‘rprojroot’ was built under R version 4.4.2"
+"0","library(ggplot2)"

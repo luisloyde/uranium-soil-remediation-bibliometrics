@@ -5,7 +5,7 @@ date: "2024-11-10"
 output: html_document
 language: r
 editor_options: 
-  chunk_output_type: console
+  chunk_output_type: inline
 ---
 
 ```{r setup, include=FALSE}
@@ -17,6 +17,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r}
 library(bibliometrix)
 library(rprojroot)
+library(ggplot2)
 ```
 
 ## Clear environment and close graphics
@@ -59,7 +60,18 @@ This plot gives a general overview, helping to identify patterns in the data.
 
 ```{r}
 # Generate plots of the bibliometric analysis
-plot(x = result)
+plots <- plot(x = result)
+
+lapply(seq_along(plots), function(i) {
+    ggsave(
+      filename = paste0("figures/plot_analysis_", i, ".tif"),
+      plot = plots[[i]],
+      width = 3500 / 300,
+      height = 1500 / 300,
+      units = "in",
+      dpi = 300,
+      device = "tiff",
+      compression = "lzw")})
 ```
 
 # Conceptual structure
@@ -69,6 +81,29 @@ This analysis uses Correspondence Analysis (CA) to group documents by keywords, 
 ```{r}
 # Perform conceptual structure analysis using keywords
 CS <- conceptualStructure(data, field = "ID", method = "CA", minDegree = 3, clust = 4, stemming = FALSE, labelsize = 10, documents = nrow(data))
+
+plots <- list(
+  graph_terms = CS$graph_terms,
+  graph_documents_Contrib = CS$graph_documents_Contrib,
+  graph_documents_TC = CS$graph_documents_TC
+)
+
+if (!dir.exists("figures")) {
+  dir.create("figures")
+}
+
+lapply(names(plots), function(name) {
+  ggsave(
+    filename = paste0("figures/", name, ".tif"),
+    plot = plots[[name]],
+    width = 3500 / 300,
+    height = 1500 / 300,
+    units = "in",
+    dpi = 300,
+    device = "tiff",
+    compression = "lzw"
+  )
+})
 ```
 
 # Bibliographic networks
@@ -93,9 +128,15 @@ co_citation = networkPlot(NetMatrix_citation_cc, normalize = "association", weig
 This network shows the relationships between keywords that frequently appear together in documents, highlighting main topics and trends within the field.
 
 ```{r}
-# Create a network matrix for keyword co-occurrences
+# # Create a network matrix for keyword co-occurrences
 NetMatrix_keyword_co <- biblioNetwork(data, analysis = "co-occurrences", network = "keywords", sep = ";")
+
+# Open device for saving tif
+tiff("figures/keyword_co_occurrence_network.tif", width = 2850, height = 2850, units = "px", res = 300, compression = "lzw")
 
 # Plot the keyword co-occurrence network
 keyword_co = networkPlot(NetMatrix_keyword_co, normalize = "association", weighted = NULL, n = nrow(data), Title = "Keyword Co-Occurrences", type = "fruchterman", size = TRUE, edgesize = 2.5, labelsize = 1)
+
+# Close device
+dev.off()
 ```

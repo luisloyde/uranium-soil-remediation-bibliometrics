@@ -1,0 +1,2 @@
+"0","# Generate plots of the bibliometric analysis"
+"0","plots <- plot(x = result)"
