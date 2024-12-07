@@ -20,14 +20,6 @@ library(rprojroot)
 library(ggplot2)
 ```
 
-## Clear environment and close graphics
-
-```{r}
-root_file <- find_rstudio_root_file()
-setwd(root_file)
-data <- convert2df("data/database1.bib", dbsource = "scopus", format = "bibtex")
-```
-
 # Introduction
 
 This document performs a bibliometric analysis on a dataset, providing descriptive analysis and visualizations for author co-citation and keyword co-occurrences.
@@ -39,7 +31,7 @@ This document performs a bibliometric analysis on a dataset, providing descripti
 setwd(find_rstudio_root_file())
 
 # Convert bibliographic data from .bib format to a data frame
-data <- convert2df("data/database1.bib", dbsource = "scopus", format = "bibtex")
+data <- convert2df("data/database2.bib", dbsource = "scopus", format = "bibtex")
 ```
 
 # Bibliometric analysis
