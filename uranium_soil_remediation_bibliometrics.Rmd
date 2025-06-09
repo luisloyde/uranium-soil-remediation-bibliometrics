@@ -1,0 +1,27 @@
+---
+title: "uranium_soil_remediation_bibliometrics"
+author: "Luis Loyde"
+date: "2024-11-10"
+output: html_document
+language: r
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Packages
+
+```{r}
+library(bibliometrix)
+library(rprojroot)
+
+setwd(find_rstudio_root_file())
+data <- convert2df("database1.bib", dbsource = "scopus", format = "bibtex")
+```
+
+```{r}
+
+```
